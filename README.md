@@ -1,4 +1,4 @@
-# watch-slider
+# roundSlider
 
 ## Project setup
 ```
