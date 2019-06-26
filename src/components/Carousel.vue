@@ -161,7 +161,8 @@ export default {
       display: block;
       opacity: 0;
       -webkit-transform: scale(0.8) translate3d(-310%, 70%, 0) rotate(-35deg);
-              transform: scale(0.8) translate3d(-310%, 70%, 0) rotate(-35deg); }
+              transform: scale(0.8) translate3d(-310%, 70%, 0) rotate(-35deg); 
+    }
     .item.is-hidden.right {
       display: block;
       opacity: 0;
