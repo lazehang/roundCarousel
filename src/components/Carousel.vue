@@ -1,47 +1,57 @@
 <template>
-    <div class="roundCarousel stream is-shown">
-        <div v-for="(img, i) in images" :key="i" class="is-hidden item">
-            <img :src="img" class="item__image js-imgsrc" />
-        </div>
+    <div class="roundCarousel stream " :class="{'is-shown': showCarousel}">
+        <Slide 
+            v-for="(img, i) in images" 
+            :key="i" 
+            :className="`${classNames[i]} item`"
+            :img="img"/>
     </div>
 </template>
 <script>
+import Slide from './Slide.vue'
+
 export default {
+    components: {
+        Slide
+    },
     data() {
         return {
             items: [],
             count: 0,
             classes: [],
             itemcount: 0,
-            duration: 3000
+            classNames: [],
+            showCarousel: false
         }
     },
     props: {
-        images: Array
+        images: Array,
+        duration: {
+            type: Number,
+            default: 3000
+        }
     },
     methods: {
         getMod(n, m) {
             return ((m % n) + n) % n;
         },
         shiftWatches(transition) {
-            this.count = this.getMod(this.items.length, this.count);
+            this.count = this.getMod(this.itemcount, this.count);
 
             /* Distribute classes from array */
             for (let i = 0; i < this.itemcount; i++) {
-                const item = this.items[i];
                 let clnum = i - this.count;
                 clnum = clnum < 0 ? this.itemcount + clnum : clnum;
                 const animClass = transition ? ' is-animated' : '';
                 const itemClass = this.classes[clnum] ? this.classes[clnum] + animClass : 'is-hidden';
-                item.className = ""
-                item.className = itemClass + ' item'
+                this.classNames.splice(i, 1)
+                this.classNames.splice(i, 0, itemClass);
             } 
         },
         init() {
             this.items = document.querySelectorAll('.roundCarousel .item')
             this.itemcount = this.items.length
             this.classes = ['is-hidden left', 'left-first', 'left-second', 'center', 'right-first', 'right-second', 'is-hidden right']
-            this.count = 1
         }
     },
     mounted() {
@@ -49,17 +59,10 @@ export default {
 
             this.init()
 
-            this.items.forEach(function(k,v) {
-                k.dataset.id = v
-            });
-
             this.count = Math.floor(Math.random()*this.itemcount);
-            this.count = 25;
-            this.shiftWatches(false);
 
-            document.querySelectorAll('.stream').forEach( (el) => {
-                el.classList.add('is-shown');
-            })
+            this.shiftWatches(false);
+            this.showCarousel = true
 
             window.setInterval(() => {
                 this.count--;

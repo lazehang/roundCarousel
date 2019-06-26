@@ -15,18 +15,12 @@ export default {
   data() {
     return {
       slides: [
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png',
-        'https://undone.com/media/d/12884/Urban_modern_wht_front.png'
+        'images/1.png',
+        'images/2.png',
+        'images/3.png',
+        'images/4.png',
+        'images/5.png',
+        'images/6.png'
       ]
     }
   }
